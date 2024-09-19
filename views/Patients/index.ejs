@@ -1,0 +1,43 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+  table,
+  th,
+  td {
+    border: 2px solid #e55151;
+    width: 73rem;
+    height: 15px;
+  }
+</style>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>date</th>
+    <th>bodyTemperature</th>
+    <th>bloodPressure</th>
+    <th>heartRate</th>
+    <th>timestamps</th>
+  </tr>
+  <% for(patient of allPatients){ %>
+  <tr>
+    <td><%= patient.id %></td>
+    <td><%= patient.date %></td>
+    <td><%= patient.bodyTemperature %></td>
+    <td><%= patient.bloodPressure %></td>
+    <td><%= patient.heartRate %></td>
+    <td>
+      <%= patient.createdAt ? patient.createdAt.toLocaleString() : 'Nothinghere'
+      %>
+      <br />
+      <%= patient.updatedAt ? patient.updatedAt.toLocaleString() :
+      'Nothingupdated' %>
+    </td>
+    <td>
+      <form method="get" action="/patients/<%= patient.id %>">
+        <button>Show Records</button>
+      </form>
+    </td>
+  </tr>
+  <%}%>
+</table>

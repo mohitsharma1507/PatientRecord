@@ -1,0 +1,91 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="row mt-3">
+  <div class="col-8 offset-2">
+    <h3>Create an Edit Record</h3>
+    <form
+      method="POST"
+      action="/Patients/<%= patient._id %>?_method=PUT"
+      novalidate
+      class="needs-validation"
+    >
+      <div class="mb-3">
+        <label for="date" class="form-label">date</label>
+        <input
+          name="patient[date]"
+          value="<%= patient.date %>"
+          type="date"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="bodyTemperature" class="form-label">BodyTemperature</label>
+        <input
+          name="patient[bodyTemperature]"
+          type="number"
+          value="<%= patient.bodyTemperature %>"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="systolic" class="form-label">Systolic Blood Pressure</label>
+        <input
+          name="patient[bloodPressure][systolic]"
+          value="<%= patient.bloodPressure.systolic %>"
+          id="systolic"
+          type="number"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="diastolic" class="form-label"
+          >Diastolic Blood Pressure</label
+        >
+        <input
+          name="patient[bloodPressure][diastolic]"
+          value="<%= patient.bloodPressure.diastolic %>"
+          id="diastolic"
+          type="number"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="heartRate" class="form-label">heartRate</label>
+        <input
+          name="patient[heartRate]"
+          value="<%= patient.heartRate %>"
+          type="number"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="createdAt" class="form-label">Created At</label>
+        <input
+          id="createdAt"
+          type="text"
+          class="form-control"
+          value="<%= patient && patient.createdAt ? patient.createdAt.toLocaleString() : 'N/A' %>"
+          readonly
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="updatedAt" class="form-label">Updated At</label>
+        <input
+          id="updatedAt"
+          type="text"
+          class="form-control"
+          value="<%= patient && patient.updatedAt ? patient.updatedAt.toLocaleString() : 'N/A' %>"
+          readonly
+        />
+      </div>
+      <button class="btn btn-dark edit-btn mb-3">Edit</button>
+    </form>
+  </div>
+</div>
