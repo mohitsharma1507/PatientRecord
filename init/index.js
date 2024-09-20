@@ -2,7 +2,9 @@ const mongoose = require("mongoose");
 const initData = require("./data.js");
 const Patient = require("../model/patient.js");
 
-const dbUrl = "mongodb://127.0.0.1:27017/PatientData";
+//const dbUrl = "mongodb://127.0.0.1:27017/PatientData";
+const dbUrl =
+  "mongodb+srv://patientRecord:05072001@cluster0.ys7ma.mongodb.net/";
 
 main()
   .then((res) => {

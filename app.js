@@ -13,7 +13,6 @@ const user = require("./routes/user.js");
 const Patients = require("./routes/patient.js");
 const User = require("./model/user.js");
 
-
 app.set("views", path.join(__dirname, "/views"));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "/public")));
@@ -21,7 +20,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 
-const dbUrl = "mongodb://127.0.0.1:27017/PatientData";
+//const dbUrl = "mongodb://127.0.0.1:27017/PatientData";
+const dbUrl =
+  "mongodb+srv://patientRecord:05072001@cluster0.ys7ma.mongodb.net/";
 
 main()
   .then((res) => {
@@ -69,7 +70,7 @@ app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   res.locals.currUser = req.user;
- 
+
   next();
 });
 
